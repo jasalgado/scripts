@@ -1,4 +1,4 @@
-Unit]
+[Unit]
 Description=Servicio para Tomcat
 After=syslog.target systemd-sysctl.service network.target
 
