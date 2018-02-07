@@ -1,0 +1,22 @@
+Unit]
+Description=Servicio para Tomcat
+After=syslog.target systemd-sysctl.service network.target
+
+[Service]
+Type=forking
+Environment=CATALINA_HOME=/root/apache-tomcat-8.5.27
+Environment=JRE_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-5.b12.el7_4.x86_64/jre
+Environment=CATALINA_PID=/root/apache-tomcat-8.5.27/bin/catalina.pid
+ExecStart=/root/apache-tomcat-8.5.27/bin/startup.sh
+ExecStop=/bin/kill -15 $MAINPID
+PIDFile=/root/apache-tomcat-8.5.27/bin/catalina.pid
+SuccessExitStatus=143
+
+#User=tomcat
+#Group=tomcat
+#UMask=0007
+#RestartSec=10
+#Restart=always
+
+[Install]
+WantedBy=multi-user.target
